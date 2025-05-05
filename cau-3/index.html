@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./script.js"></script>
+</head>
+<body>
+<h3>Quản lí sách</h3>
+<table border="1">
+    <thead>
+    <tr>
+        <td>Mã số sách</td>
+        <td>Tên sách</td>
+        <td>Năm sản xuất</td>
+        <td>Số quyển</td>
+        <td>Tình trạng</td>
+    </tr>
+    </thead>
+    <tbody id="bookTable">
+    </tbody>
+</table>
+<button type="button" onclick="populateExistingBookDropdown()">Thêm sách đã có</button>
+<button type="button" onclick="showForm()">Thêm sách mới</button>
+<button type="button" onclick="showBorrowForm()">Mượn sách</button>
+
+<button>Hiển thị sách nhiều nhất</button>
+<!--Add books-->
+<div id="bookForm" style="display: none;">
+    <h3>Thêm Sách</h3>
+    <form onsubmit="addBook(event)">
+        <label>Mã sách: <input type="text" id="bookCode" required></label><br>
+        <label>Tên sách: <input type="text" id="bookTitle" required></label><br>
+        <label>Năm XB: <input type="number" id="bookYear" required></label><br>
+        <label>Số quyển: <input type="number" id="numOfBooks" required></label><br>
+        <button type="submit">Lưu</button>
+        <button type="button" onclick="hideForm()">Hủy</button>
+    </form>
+</div>
+<!--Add existing books-->
+<div id="existingBookForm" style="display: none;">
+    <h3>Thêm số lượng sách đã có</h3>
+    <form id="addExistingForm" onsubmit="addExistingBook(event)">
+        <label for="existingBookSelect">Chọn mã sách:</label>
+        <select id="existingBookSelect"></select>
+        <label for="additionalCopies">Số lượng thêm:</label>
+        <input type="number" id="additionalCopies" required>
+        <button type="submit">Thêm</button>
+        <button type="button" onclick="hideAddExistingBook()">Hủy</button>
+    </form>
+</div>
+<!--Borrow book-->
+<form id="borrowForm" onsubmit="borrowBook(event)" style="display:none;">
+    <label for="borrowSelect">Chọn mã sách để mượn:</label>
+    <select id="borrowSelect"></select><br>
+    <button type="submit">Mượn</button>
+    <button type="button" onclick="hideBorrowForm()">Hủy</button>
+</form>
+</body>
+</html>
